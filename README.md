@@ -23,6 +23,10 @@ https://github.com/HaruNine/rasp_pi_AI/assets/149753122/fb746d1b-2b61-4108-ae24-
 
 
 ### rasp_pi + dlp
+![1](https://github.com/HaruNine/rasp_pi_AI/assets/149753122/6ec88d21-bf06-4f34-b178-e98fe97e77f0)
+![2](https://github.com/HaruNine/rasp_pi_AI/assets/149753122/444d229b-2c89-453e-9a51-9f0d2dbe11dd)
+![3](https://github.com/HaruNine/rasp_pi_AI/assets/149753122/7367cc21-3ba1-419d-ab60-3d31cc50d78f)
+![4](https://github.com/HaruNine/rasp_pi_AI/assets/149753122/fd8c09b8-1b7c-4012-b361-afe66330851d)
 
 https://github.com/HaruNine/rasp_pi_AI/assets/149753122/5007aac8-5123-473b-80ec-0acdd9723694
 
