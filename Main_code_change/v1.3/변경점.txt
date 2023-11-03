@@ -1,0 +1,1 @@
+start_voice.py 파일과 voice_chat.py 파일의 코드를 합침 >> 오류 및 프로세스 사용 최소화

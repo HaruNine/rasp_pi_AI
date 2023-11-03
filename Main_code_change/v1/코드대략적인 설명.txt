@@ -1,0 +1,41 @@
+
+ `start_voice.py` 파일:
+
+1. **API 키 설정:**
+   - `GOOGLE_APPLICATION_CREDENTIALS` 환경 변수를 통해 Google Cloud Speech-to-Text 및 Text-to-Speech API에 액세스하는 데 필요한 인증 정보를 설정합니다.
+   - OpenAI GPT API에 액세스하기 위해서는 OpenAI API 키가 `openai_session.txt` 파일에서 읽혀집니다.
+
+2. **음성 입력 및 텍스트 변환:**
+   - `record_and_recognize` 함수는 마이크로폰을 사용하여 사용자의 음성을 녹음하고, Google Cloud Speech-to-Text API를 사용하여 음성을 텍스트로 변환합니다.
+   - 지정된 키워드가 감지되면 (`KEYWORD` 변수에 설정된 키워드), `execute_voice_chat` 함수가 호출되어 음성 대화를 시작합니다.
+
+3. **음성 출력 및 대화 실행:**
+   - `speak_response` 함수는 Google Cloud Text-to-Speech API를 사용하여 주어진 텍스트를 음성으로 변환하고, 그 결과를 `response.wav` 파일에 저장합니다.
+   - `play_audio` 함수는 저장된 WAV 파일을 라즈베리파이의 스피커로 재생합니다.
+   - `execute_voice_chat` 함수는 "네 라니입니다"라는 음성을 출력한 후, `voice_chat.py`를 실행하여 음성 채팅을 시작합니다.
+
+4. **주 실행 루프:**
+   - `record_and_recognize` 함수를 통해 사용자의 음성을 계속해서 감지하고, 특정 키워드가 감지될 때마다 음성 채팅이 시작됩니다.
+
+### `voice_chat.py` 파일:
+
+1. **API 키 설정 및 설정:**
+   - Google Cloud Speech-to-Text 및 Text-to-Speech API, 그리고 OpenAI GPT에 대한 API 키와 설정이 설정됩니다.
+
+2. **음성 녹음 및 텍스트 변환:**
+   - `record_audio` 함수는 마이크로폰을 사용하여 5초 동안 사용자의 음성을 녹음하고, Google Cloud Speech-to-Text API를 사용하여 음성을 텍스트로 변환합니다.
+
+3. **GPT를 사용한 대화 생성:**
+   - `chat_with_gpt` 함수는 OpenAI GPT API를 사용하여 사용자의 입력을 기반으로 대화를 생성합니다.
+
+4. **텍스트를 음성으로 변환 및 재생:**
+   - `text_to_speech` 함수는 Google Text-to-Speech API를 사용하여 GPT의 응답을 음성으로 변환하고, `output.wav` 파일에 저장합니다.
+   - `play_audio` 함수는 저장된 WAV 파일을 라즈베리파이의 스피커로 재생합니다.
+
+5. **음성 채팅 실행:**
+   - `start_voice_chat` 함수는 `start_voice.py`를 실행하여 음성 채팅을 시작합니다.
+
+6. **주 실행 루프:**
+   - `main` 함수는 계속해서 사용자의 음성을 녹음하고, GPT를 사용하여 응답을 생성하며, 그 결과를 음성으로 변환하여 재생합니다.
+
+이러한 방식으로 두 파일을 함께 사용하면 사용자가 음성으로 입력하면 시스템이 이를 텍스트로 변환하고, 그 텍스트를 기반으로 대화를 생성하여 다시 음성으로 출력합니다. 사용자와 시스템 간의 인터랙션은 지속적으로 반복되며, 특정 키워드를 감지하면 음성 채팅이 시작됩니다.
