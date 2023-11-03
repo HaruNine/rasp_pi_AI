@@ -6,7 +6,7 @@ google cloud의 stt, tts
 , chatGPT API
 
 ## 환경
-라즈베리파이 + dlpdlcr2000evm 을활용하여 대화형 홀로그램재작
+라즈베리파이 + dlpdlcr2000evm 을활용하여 대화형 홀로그램제작
 
 ## GPIO핀 연결
 rasp Pi
