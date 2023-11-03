@@ -1,3 +1,5 @@
+//this is all of main code 
+
 import os
 import io
 import speech_recognition as sr
