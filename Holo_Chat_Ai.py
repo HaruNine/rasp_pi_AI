@@ -26,11 +26,11 @@ pygame.mouse.set_visible(False)
 clock = pygame.time.Clock()  # 시계 생성
 
 # Google Cloud 서비스 계정 키 파일 경로 설정
-keyfile_path = "C:\\Users\\HRuin\Desktop\\sex\\testpy\\axial-keep-440323-t8-6999390412db.json"
+keyfile_path = "구글 Cloud api.json"
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = keyfile_path
 
 # OpenAI API 키 설정
-with open('C:\\Users\\HRuin\\Desktop\\sex\\testpy\\openai_session.txt', 'r') as file:
+with open('chatgpt api Key', 'r') as file:
     api_key = file.read().strip()
 clients = OpenAI(api_key=api_key)
 
