@@ -1,11 +1,11 @@
-//this is all of main code 
+# this is all of main code 
 
 import os
 import io
 import speech_recognition as sr
 from google.cloud import texttospeech
 from google.cloud import speech_v1p1beta1 as speech
-import openai
+from openai import OpenAI
 import wave
 import pyaudio
 import pygame
@@ -16,7 +16,7 @@ pygame.init()
 
 # 화면 설정
 width, height = 864, 480  # 임시 크기 (전체 화면으로 설정된 이후에는 무시됨)
-screen = pygame.display.set_mode((width, height), pygame.FULLSCREEN)
+screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Audio Visualization')
 
 # 마우스 숨기기
@@ -26,13 +26,13 @@ pygame.mouse.set_visible(False)
 clock = pygame.time.Clock()  # 시계 생성
 
 # Google Cloud 서비스 계정 키 파일 경로 설정
-keyfile_path = "GOOGLE CLOUD API.json 위치경로"
+keyfile_path = "C:\\Users\\HRuin\Desktop\\sex\\testpy\\axial-keep-440323-t8-6999390412db.json"
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = keyfile_path
 
 # OpenAI API 키 설정
-with open('openai_session 위치경로', 'r') as file:
+with open('C:\\Users\\HRuin\\Desktop\\sex\\testpy\\openai_session.txt', 'r') as file:
     api_key = file.read().strip()
-openai.api_key = api_key
+clients = OpenAI(api_key=api_key)
 
 # Google Cloud Text-to-Speech 클라이언트 초기화
 client = texttospeech.TextToSpeechClient()
@@ -167,12 +167,14 @@ def transcribe_audio(file_path, language_code="ko-KR"):
 
 # OpenAI API ChatGPT 설정 및 구동
 def chat_with_gpt(prompt):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=prompt,
+    response = clients.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[
+            {"role": "user", "content": prompt}  # 사용자 입력을 메시지로 전달
+        ],
         max_tokens=500
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message.content.strip()
 
 
 # Google Text-to-Speech API 사용해서 오디오로 변환
